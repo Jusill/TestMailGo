@@ -1,3 +1,4 @@
+//Константиновский Борис
 package main
 
 import (
@@ -6,6 +7,7 @@ import (
 	"os"
 )
 
+//Функция вычисляющая количество строчек в файле
 func count(name string) int {
 	var i int = 0
 
@@ -37,14 +39,19 @@ func main() {
 	var name string
 	var num int = 0
 
-	fmt.Print("Please, enter name of file: ")
-	fmt.Scanf("%s", &name)
+	if len(os.Args) == 1 {
+		fmt.Printf("Enter name of file!\n")
+		os.Exit(1)
+	}
+
+	name = os.Args[1]
+
 	num = count(name)
 
 	if num == -1 {
-		fmt.Println("Cannot find file!")
+		fmt.Printf("Cannot find file!\n")
 		os.Exit(2)
 	} else {
-		fmt.Println(num)
+		fmt.Printf("%d", num)
 	}
 }
